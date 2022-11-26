@@ -22,12 +22,6 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-      - name: Build and push
-        uses: docker/build-push-action@v3
-        with:
-          push: true
-          tags: jakepricedev/docker-unison:2.52.1-r0
-
       - name: Docker Hub Description
         uses: peter-evans/dockerhub-description@v3
         with:
@@ -36,4 +30,10 @@ jobs:
           repository: jakepricedev/docker-unison
           readme-filepath: ../../README.md
           short-description: ${{ github.event.repository.description }}
+
+      - name: Build and push
+        uses: docker/build-push-action@v3
+        with:
+          push: true
+          tags: jakepricedev/docker-unison:2.52.1-r0
 
